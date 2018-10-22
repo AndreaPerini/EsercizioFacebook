@@ -34,11 +34,4 @@ public class Amici {
 		return eta;
 	}
 
-	
-	
-
-	
-	
-	
-	
 }

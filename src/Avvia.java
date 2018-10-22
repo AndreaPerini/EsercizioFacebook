@@ -5,7 +5,11 @@ public class Avvia {
 	public static void main(String[] args) {
 
 		int scelta;
-		boolean flag = false;
+		int x = 0;
+		int y = 0;
+		boolean controllo = false;
+		boolean amiciiniz = false;
+		boolean fotoiniz = false;
 		Scanner sc = new Scanner(System.in);
 		do {
 			System.out.println("Inserisci il numero corrispondente al metodo da eseguire: ");
@@ -14,11 +18,12 @@ public class Avvia {
 			System.out.println("3 = Controlla quante volte un amico è stato taggato");
 			System.out.println("4 = Guarda chi è l'amico più taggato");
 			System.out.println("5 = Termina");
+			System.out.println("Sappi che per eseguire i metodi 3 e 4 devi eseguire i metodi 1 e 2 almeno una volta");
 			scelta = sc.nextInt();
 			switch (scelta) {
 			case 1:
 				System.out.println("Inserisci il numero di amici da aggiungere: ");
-				int x = sc.nextInt();
+				x = sc.nextInt();
 				ListaAmici l1 = new ListaAmici(x);
 
 				Amici a;
@@ -38,10 +43,11 @@ public class Avvia {
 					// System.out.println(a.getCognome());
 					// System.out.println(a.getEta());
 				}
+				amiciiniz = true;
 				break;
 			case 2:
 				System.out.println("Inserisci il numero di foto da aggiungere: ");
-				int y = sc.nextInt();
+				y = sc.nextInt();
 				ListaFoto l2 = new ListaFoto(y);
 
 				Foto f;
@@ -55,21 +61,41 @@ public class Avvia {
 					f = new Foto(t, z);
 					l2.aggiungiFoto(f, y);
 				}
+				fotoiniz = true;
 				break;
 			case 3:
-				//ListaFoto ogg = new ListaFoto.contaTag();
-				//ListaFoto.contaTag();
+				if (amiciiniz == true && fotoiniz == true) {
+					ListaFoto ogg1 = new ListaFoto(y);
+					ogg1.contaTag();
+				} else {
+					if (amiciiniz == false) {
+						System.out.println("Devi creare almeno un amico");
+					}
+					if (fotoiniz == false) {
+						System.out.println("Devi caricare almeno una foto");
+					}
+				}
 				break;
 			case 4:
-				//amicoPiuTaggato();
+				if (amiciiniz == true && fotoiniz == true) {
+					ListaFoto ogg2 = new ListaFoto(y);
+					ogg2.amicoPiuTaggato();
+				} else {
+					if (amiciiniz == false) {
+						System.out.println("Devi creare almeno un amico");
+					}
+					if (fotoiniz == false) {
+						System.out.println("Devi caricare almeno una foto");
+					}
+				}
 				break;
 			case 5:
-				flag = true;
+				controllo = true;
 				break;
 			default:
 				System.out.println("Inserimento errato");
 			}
-		} while (flag = true);
+		} while (controllo = true);
 		sc.close();
 	}
 }

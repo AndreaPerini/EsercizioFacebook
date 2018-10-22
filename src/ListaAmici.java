@@ -16,13 +16,9 @@ public class ListaAmici {
 		}
 		return false;
 	}
-	
-	
-	//public void taggaAmico (Amici.nome, Amici.cognome, Foto.titolo){
 
-	//}
-	
-	
-	
-	
+	// public void taggaAmico (Amici.nome, Amici.cognome, Foto.titolo){
+
+	// }
+
 }
